@@ -1,0 +1,36 @@
+DATASET:
+  DATA_ROOT: /scratch/public_scratch/toponav/indoor-topo-loc/datasets/scannetpp-resized/dslr_resize_mast3r
+  DATA_SOURCE: ScanNetPPResized
+  HEIGHT: 336
+  M_PRIME: 50
+  PAIRS_ROOT: /scratch/public_scratch/toponav/indoor-topo-loc/datasets/scannetpp-resized/scannetpp_pairs
+  RESIZE_H: 336
+  RESIZE_W: 512
+  SCENES: null
+  SCENES_VAL: null
+  SEGDATA_ROOT: /scratch/public_scratch/toponav/indoor-topo-loc/datasets/scannetpp-resized/masks_resize_mast3r
+  WIDTH: 512
+DEBUG: false
+FEATURE_MATCHER:
+  SINKHORN:
+    DUSTBIN_SCORE_INIT: 1.0
+    NUM_IT: 50
+  TYPE: Sinkhorn
+MODEL: MASt3RSegFeat
+RANDOM_SEED: 42
+SAVE_DIR: results/spp_resz176_2025-03-03_15-43-39
+TRAINING:
+  ALT_LOSS_WEIGHT: 0
+  BATCH_SIZE: 36
+  EPOCHS: 20
+  GRAD_CLIP: 0.0
+  LOG_INTERVAL: null
+  LR: 0.0001
+  LR_STEP_GAMMA: null
+  LR_STEP_INTERVAL: null
+  NUM_GPUS: 1
+  NUM_WORKERS: 4
+  PREFETCH_FACTOR: 2
+  VAL_BATCHES: null
+  VAL_INTERVAL: null
+  WEIGHT_DECAY: 0.0001
