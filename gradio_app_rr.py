@@ -241,18 +241,15 @@ def run_full_pipeline(recording_id, upload0, upload1):
 
     # 4) LOG TO RERUN
     # Create annotation context with colors for each matched pair
-    annotations = []
-    np.random.seed(42)  # For consistent colors
+    annotations = [(0, "background", (0, 0, 0, 0))]  # RGBA: alpha=0 => invisible
 
-    # Only create annotations for valid matches
     for idx0, idx1 in enumerate(match_indices_cpu):
-        if idx1 >= 0:  # Valid match
-            pair_id = idx0 + 1  # 1-indexed
+        if idx1 >= 0:
+            pair_id = idx0 + 1
             color = tuple(np.random.randint(0, 255, 3).tolist())
             annotations.append((pair_id, f"match_{pair_id}", color))
 
-    if annotations:
-        rec.log("/", rr.AnnotationContext(annotations), static=True)
+    rec.log("/", rr.AnnotationContext(annotations), static=True)
 
     # Log original images
     rec.log("image0/rgb", rr.Image(img0_np))
